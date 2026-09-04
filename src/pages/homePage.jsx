@@ -7,17 +7,28 @@ import CheckoutPage from "./checkout";
 import MyOrders from "./myOrders";
 import Settings from "./settings";
 import Landing from "./landingComponents"
+import CustomerReviews from "../components/CustomerReviews";
 
 export default function HomePage() {
   return (
-    <div className="w-full h-full bg-primary text-secondary">
+    <div className="w-full h-full bg-primary text-secondary overflow-y-auto">
 
       <Header />
 
       <Routes>
+         <Route
+          index
+          element={
+            <>
+              <Landing />
+              <CustomerReviews />
+            </>
+          }
+        />
         <Route index element={<Landing/>} />
 
         <Route path="products" element={<ProductsPage />} />
+       
 
         <Route path="contact-us" element={<h1>Contact Us Page</h1>} />
 
