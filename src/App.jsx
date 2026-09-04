@@ -5,7 +5,7 @@ import HomePage from './pages/homePage'
 import LoginPage from './pages/loginPage'
 import RegisterPage from './pages/registerPage'
 import AdminPage from './pages/adminPage'
-import TestPage from './pages/TestPage'
+import TestPage from './pages/testPage'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import ForgetPassword from './pages/forgetPassword'
 
