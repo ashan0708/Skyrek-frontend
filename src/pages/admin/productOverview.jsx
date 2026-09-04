@@ -6,7 +6,7 @@ import api from "../../utils/api";
 
 import LoadingScreen from "./LoadingScreen";
 
-import ProductImageSlideShow from "../../components/ProductImageSlideShow";
+import ProductImageSlideShow from "../../components/productImageSlideShow";
 import toast from "react-hot-toast";
 import { addToCart } from "../../utils/cart";
 
