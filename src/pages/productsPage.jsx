@@ -41,33 +41,37 @@ export default function ProductsPage() {
     }, []);
 
     function searchProducts() {
-        if (!query.trim()) {
-            getAllProducts();
-            return;
-        }
-        setSearching(true);
-
-        setLoading(true);
-
-        api.get(`/products/search/${encodeURIComponent(query)}`)
-            .then((response) => {
-                console.log("SEARCH RESPONSE:", response.data);
-
-                setProducts(response.data.products || []);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log("SEARCH ERROR:", error);
-                setProducts([]);
-                setLoading(false);
-            });
+    if (!query.trim()) {
+        setSearching(false);
+        getAllProducts();
+        return;
     }
+
+    setSearching(true);
+    setLoading(true);
+
+    api.get(`/products/search/${encodeURIComponent(query)}`)
+        .then((response) => {
+            console.log("SEARCH RESPONSE:", response.data);
+
+            setProducts(response.data.products || []);
+        })
+        .catch((error) => {
+            console.log("SEARCH ERROR:", error);
+            setProducts([]);
+        })
+        .finally(() => {
+            setLoading(false);
+            setSearching(false);
+        });
+}
 
     return (
         <div className="w-full bg-primary flex justify-center items-center gap-6 flex-wrap p-20">
 
-            {loading && <LoadingScreen />}
+           
             {searching && <LoadingScreen />}
+            {loading && <LoadingScreen />}
 
             <div className="w-full h-[70px] flex justify-center items-center">
 
@@ -90,6 +94,7 @@ export default function ProductsPage() {
                 <button
                     onClick={() => {
                         setQuery("");
+                        setSearching(false);
                         getAllProducts();
                     }}
                     className="w-[120px] h-[40px] bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors duration-300 px-4 py-2 ml-2"
