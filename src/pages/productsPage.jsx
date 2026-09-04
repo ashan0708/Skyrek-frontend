@@ -83,7 +83,7 @@ export default function ProductsPage() {
                     onClick={searchProducts} disabled ={searching}
                     className="w-[120px] h-[40px] bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 px-4 py-2 ml-2"
                 >
-                    Search
+                   
                     {searching ? "Searching..." : "Search"}
                 </button>
 

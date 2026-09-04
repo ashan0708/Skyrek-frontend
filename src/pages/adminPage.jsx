@@ -24,7 +24,7 @@ export default function AdminPage() {
           if (!token) {
               setUser(null);
               toast.error("You are not authorized to access this page");
-              navigate("/login");
+              navigate("/signin");
               return;
           }
   
@@ -38,14 +38,14 @@ export default function AdminPage() {
                 setUser(res.data);
               }else{
                 toast.error("You are not authorized to access this page");
-                navigate("/login");
+                navigate("/signin");
               }
           })
           .catch((err) => {
               console.log("User fetch error:", err);
               setUser(null);
               toast.error("You are not authorized to access this page");
-              navigate("/login");
+              navigate("/signin");
           });
       }, [])
 

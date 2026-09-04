@@ -56,6 +56,7 @@ export default function LoginPage() {
       email: email,
       password: password
     });
+    console.log("LOGIN RESPONSE:", res.data);
 
     localStorage.setItem("token", res.data.token);
 
