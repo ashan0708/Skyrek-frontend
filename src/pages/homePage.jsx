@@ -6,6 +6,7 @@ import CartPage from './cartPage'
 import CheckoutPage from "./checkout";
 import MyOrders from "./myOrders";
 import Settings from "./settings";
+import Landing from "./landingComponents"
 
 export default function HomePage() {
   return (
@@ -14,7 +15,7 @@ export default function HomePage() {
       <Header />
 
       <Routes>
-        <Route index element={<></>} />
+        <Route index element={<Landing/>} />
 
         <Route path="products" element={<ProductsPage />} />
 
