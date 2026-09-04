@@ -70,7 +70,7 @@ export default function ProductsPage() {
         <div className="w-full bg-primary flex justify-center items-center gap-6 flex-wrap p-20">
 
            
-            {searching && <LoadingScreen />}
+            
             {loading && <LoadingScreen />}
 
             <div className="w-full h-[70px] flex justify-center items-center">
@@ -94,7 +94,6 @@ export default function ProductsPage() {
                 <button
                     onClick={() => {
                         setQuery("");
-                        setSearching(false);
                         getAllProducts();
                     }}
                     className="w-[120px] h-[40px] bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors duration-300 px-4 py-2 ml-2"
