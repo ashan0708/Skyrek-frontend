@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../utils/api";
 import LoadingScreen from "./admin/LoadingScreen";
 import ProductCard from "../components/ProductCard";
+import toast from "react-hot-toast";
 
 export default function ProductsPage() {
     const [products, setProducts] = useState([]);
@@ -41,36 +42,46 @@ export default function ProductsPage() {
     }, []);
 
     function searchProducts() {
-    if (!query.trim()) {
-        setSearching(false);
-        getAllProducts();
-        return;
-    }
 
-    setSearching(true);
-    setLoading(true);
+        const token = localStorage.getItem("token");
 
-    api.get(`/products/search/${encodeURIComponent(query)}`)
-        .then((response) => {
-            console.log("SEARCH RESPONSE:", response.data);
+        if (token == null) {
+            toast.error("You must be logged in to search products");
+            return;
+        }
 
-            setProducts(response.data.products || []);
-        })
-        .catch((error) => {
-            console.log("SEARCH ERROR:", error);
-            setProducts([]);
-        })
-        .finally(() => {
-            setLoading(false);
+        if (!query.trim()) {
             setSearching(false);
-        });
-}
+            getAllProducts();
+            return;
+        }
+
+        setSearching(true);
+        setLoading(true);
+
+        api.get(`/products/search/${encodeURIComponent(query)}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then((response) => {
+                console.log("SEARCH RESPONSE:", response.data);
+
+                setProducts(response.data.products || []);
+            })
+            .catch((error) => {
+                console.log("SEARCH ERROR:", error);
+                setProducts([]);
+            })
+            .finally(() => {
+                setLoading(false);
+                setSearching(false);
+            });
+    }
 
     return (
         <div className="w-full bg-primary flex justify-center items-center gap-6 flex-wrap p-20">
 
-           
-            
             {loading && <LoadingScreen />}
 
             <div className="w-full h-[70px] flex justify-center items-center">
@@ -84,15 +95,23 @@ export default function ProductsPage() {
                 />
 
                 <button
-                    onClick={searchProducts} disabled ={searching}
+                    onClick={searchProducts}
+                    disabled={searching}
                     className="w-[120px] h-[40px] bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 px-4 py-2 ml-2"
                 >
-                   
                     {searching ? "Searching..." : "Search"}
                 </button>
 
                 <button
                     onClick={() => {
+
+                        const token = localStorage.getItem("token");
+
+                        if (token == null) {
+                            toast.error("You must be logged in to view all products");
+                            return;
+                        }
+
                         setQuery("");
                         getAllProducts();
                     }}

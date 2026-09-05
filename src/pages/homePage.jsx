@@ -8,6 +8,8 @@ import MyOrders from "./myOrders";
 import Settings from "./settings";
 import Landing from "./landingComponents"
 import CustomerReviews from "../components/CustomerReviews";
+import ContactUs from "./contactUs";
+import AboutUs from "./aboutUs";
 
 export default function HomePage() {
   return (
@@ -30,9 +32,9 @@ export default function HomePage() {
         <Route path="products" element={<ProductsPage />} />
        
 
-        <Route path="contact-us" element={<h1>Contact Us Page</h1>} />
+        <Route path="contact-us" element={<ContactUs />} />
 
-        <Route path="about-us" element={<h1>About-Us</h1>} />
+       <Route path="about-us" element={<AboutUs />} />
 
         <Route path="overview/:productId" element={<ProductOverview />} />
 
