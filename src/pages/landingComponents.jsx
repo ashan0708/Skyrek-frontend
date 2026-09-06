@@ -20,7 +20,7 @@ export default function LandingPage() {
 
                 <div>
                     <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                        Welcome to iComputers
+                        Welcome to DYNAMATIC TECHNOLOGIES
                     </h1>
 
                     <p className="text-lg md:text-2xl mb-8">

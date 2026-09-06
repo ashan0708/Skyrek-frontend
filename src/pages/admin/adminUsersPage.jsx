@@ -109,7 +109,7 @@ export default function AdminUsersPage() {
                 res.data?.message || "User status updated successfully"
             );
 
-            // Refresh users
+            
             getUsers();
         } catch (error) {
             console.log("STATE ERROR:", error);
@@ -125,9 +125,7 @@ export default function AdminUsersPage() {
         }
     };
 
-    // =========================
-    // Change User Role
-    // =========================
+   
     const handleRoleToggle = async (email) => {
         try {
             const token = localStorage.getItem("token");
@@ -148,7 +146,7 @@ export default function AdminUsersPage() {
                 res.data?.message || "User role updated successfully"
             );
 
-            // Refresh users
+            
             getUsers();
         } catch (error) {
             console.log("ROLE ERROR:", error);
@@ -167,12 +165,10 @@ export default function AdminUsersPage() {
     return (
         <div className="w-full h-full overflow-y-scroll flex flex-col items-center">
 
-            {/* Loading Screen */}
+            
             {loading && <LoadingScreen />}
 
-            {/* =========================
-                Header
-            ========================= */}
+           
             <div className="w-full min-h-[100px] bg-white rounded-lg shadow-md p-4 mb-4">
 
                 <h1 className="text-2xl font-bold text-gray-800">
@@ -188,9 +184,7 @@ export default function AdminUsersPage() {
                 </div>
             </div>
 
-            {/* =========================
-                Table
-            ========================= */}
+            
             <div className="w-full bg-white rounded-lg shadow-md overflow-x-auto">
 
                 <table className="w-full border-collapse">
@@ -288,14 +282,14 @@ export default function AdminUsersPage() {
                                         </div>
                                     </td>
 
-                                    {/* Email Verified */}
+                                    
                                     <td className="p-3">
                                         {user.emailVerified
                                             ? "Yes"
                                             : "No"}
                                     </td>
 
-                                    {/* Status */}
+                                    
                                     <td className="p-3">
                                         <div className="flex items-center gap-2">
 
@@ -340,12 +334,10 @@ export default function AdminUsersPage() {
 
             </div>
 
-            {/* =========================
-                Pagination
-            ========================= */}
+            
             <div className="p-3 mt-4 mb-4 bg-white shadow-2xl flex items-center justify-center gap-4">
 
-                {/* Page Size */}
+                
                 <select
                     value={pageSize}
                     onChange={(e) => {
@@ -371,7 +363,7 @@ export default function AdminUsersPage() {
                     </option>
                 </select>
 
-                {/* Previous */}
+              
                 <button
                     type="button"
                     onClick={previousPage}
@@ -381,12 +373,11 @@ export default function AdminUsersPage() {
                     Previous
                 </button>
 
-                {/* Page Number */}
                 <span className="font-semibold">
                     Page {pageNumber} of {totalPages}
                 </span>
 
-                {/* Next */}
+                
                 <button
                     type="button"
                     onClick={nextPage}

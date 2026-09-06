@@ -33,7 +33,7 @@ export default function OrderdataModal(props) {
 
             setIsOpen(false);
 
-            // Refresh orders
+           
             if (refreshr) {
                 refreshr();
             }
@@ -105,7 +105,7 @@ export default function OrderdataModal(props) {
                                     {order.addressLine2}
                                 </p>
 
-                                {/* Status */}
+                               
                                 <div className="flex items-center mt-2">
                                     <p className="text-sm text-gray-500 mr-3">
                                         Status :
@@ -158,7 +158,7 @@ export default function OrderdataModal(props) {
                                 </div>
                             </div>
 
-                            {/* Close Button */}
+                            
                             <button
                                 type="button"
                                 onClick={() => setIsOpen(false)}
@@ -199,7 +199,7 @@ export default function OrderdataModal(props) {
                                         rounded-lg flex items-center gap-4 p-4
                                         shadow-sm border border-gray-200"
                                     >
-                                        {/* Product Image */}
+                                        
                                         <div
                                             className="w-[80px] h-[70px]
                                             flex-shrink-0 flex items-center
@@ -280,7 +280,7 @@ export default function OrderdataModal(props) {
                             })}
                         </div>
 
-                        {/* Footer */}
+                        
                         <div
                             className="w-full bg-white p-4 border-t
                             flex justify-between items-center flex-shrink-0"
